@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://brr3ycbuow0h8"]
+
+[ext_resource type="PackedScene" uid="uid://cbn2k3hyvxt0o" path="res://3D_Maze.blend" id="1_5080v"]
+
+[node name="Game Scene" type="Node3D"]
+
+[node name="3D_Maze" parent="." instance=ExtResource("1_5080v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.260954, -1.19209e-07, 2.47021)
