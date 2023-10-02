@@ -32,6 +32,8 @@ var state = State.Grounded
 @export var wall_jump_boost: float = 0.3
 @export var wall_jump_boost_norm: float = 4
 
+var jump_since_release: bool = false
+
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
@@ -53,8 +55,12 @@ func _physics_process(delta):
  
 func grounded() -> Vector3:
 	if Input.is_action_pressed("Jump"):
-		jump()
-		return arial()
+		if is_on_wall():
+			wall_jump()
+			return arial()
+		else:
+			jump()
+			return arial()
 	
 	if !is_on_floor():
 		state = State.Arial
@@ -87,6 +93,7 @@ func grounded() -> Vector3:
 		else:
 			acceleration = -grounded_decelleration * velocity.normalized()
 	acceleration.y -= arial_grav
+	acceleration.y = max(-term_vel, acceleration.y)
 	return acceleration
 
 func arial() -> Vector3:
@@ -107,18 +114,20 @@ func arial() -> Vector3:
 			-Input.get_action_strength("Forwards") + Input.get_action_strength("Backwards")
 		).rotated(Vector3.UP, rotation.y) * arial_acceleration
 	else:
-		var def_acc =Vector3(
+		var def_acc =Vector2(
 			Input.get_action_strength("Right") - Input.get_action_strength("Left"),
-			0,
 			-Input.get_action_strength("Forwards") + Input.get_action_strength("Backwards"),
-		).rotated(Vector3.UP, rotation.y) * arial_acceleration
-		if abs(def_acc.length()) < abs(velocity.length()):
+		).rotated(rotation.y) * arial_acceleration
+		if abs(def_acc.length()) < abs(Vector2(velocity.x, velocity.z).length()):
 			acceleration = def_acc
 	
 	return acceleration
 
 
 func wall_jump():
+	if jump_since_release:
+		return
+	jump_since_release = true
 	var normal = get_last_slide_collision().get_normal()
 	var acc_without_norm = Vector3(0, wall_jump_vel, wall_jump_boost).rotated(Vector3.UP, rotation.y)
 	
@@ -127,9 +136,13 @@ func wall_jump():
 		acc_without_norm.y *= -1
 	
 	var acc = acc_without_norm + normal*wall_jump_boost_norm
-	velocity +=  acc
+	velocity.x +=  acc.x
+	velocity.z += acc.z
+	velocity.y = max(acc.y, velocity.y)
 
 func jump():
+	jump_since_release = true
+	
 	state = State.Arial
 	velocity.y = jump_vel
 	if Vector2(velocity.x, velocity.z).length() < max_vel:
@@ -140,6 +153,9 @@ func jump():
 		).rotated(Vector3.UP, rotation.y) * jump_boost
 
 func _unhandled_input(event):
+	if event.is_action_released("Jump"):
+		jump_since_release = false
+	
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		$Camera3D.rotate_x(-event.relative.y * mouse_sensitivity)
