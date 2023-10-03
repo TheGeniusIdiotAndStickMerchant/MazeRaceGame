@@ -7,15 +7,16 @@ size = Vector3(0.1, 0.5, 0.1)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-collision_layer = 0
+collision_layer = 2
 axis_lock_angular_x = true
 axis_lock_angular_z = true
+floor_snap_length = 0.0
 script = ExtResource("1_bymhu")
-grounded_acceleration = 4.0
+grounded_acceleration = 5.0
 grounded_decelleration = 5.0
 jump_vel = 2.2
 jump_boost = 0.5
-arial_acceleration = 0.75
+arial_acceleration = 3.0
 arial_grav = 73.575
 wall_jump_vel = 3.0
 wall_jump_boost = 0.5
@@ -26,7 +27,9 @@ shape = SubResource("BoxShape3D_stfpr")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+cull_mask = 1047555
 current = true
+fov = 90.0
 near = 0.001
 far = 100.0
 

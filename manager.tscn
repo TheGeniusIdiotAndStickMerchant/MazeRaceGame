@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv2qhtg8vro05"]
+
+[ext_resource type="Script" path="res://manager.gd" id="1_xvh57"]
+[ext_resource type="PackedScene" uid="uid://c78vxi2kaea8u" path="res://Maze/game_scene.tscn" id="2_256hk"]
+
+[node name="Manager" type="Node"]
+script = ExtResource("1_xvh57")
+maze_scene = ExtResource("2_256hk")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="Single Button" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play With 1"
+
+[node name="Single Button Back" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play With 1 Back"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainMenu/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="All Button" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play With All"
+
+[node name="All Button Back" type="Button" parent="MainMenu/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Play With All Back"
+
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/Single Button" to="." method="_on_single_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer/Single Button Back" to="." method="_on_single_button_back_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer2/All Button" to="." method="_on_all_button_pressed"]
+[connection signal="pressed" from="MainMenu/HBoxContainer/VBoxContainer2/All Button Back" to="." method="_on_all_button_back_pressed"]

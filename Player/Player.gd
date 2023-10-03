@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody3D
 
 enum State {
@@ -13,6 +14,9 @@ var state = State.Grounded
 @export var mouse_sensitivity: float = 0.002
 
 @export var max_vel: float = 2
+
+@export var fov_per_vel: float = 2
+@export var start_fov: float = 90
 
 @export_category("grounded")
 @export var grounded_acceleration: float = 1
@@ -33,9 +37,14 @@ var state = State.Grounded
 @export var wall_jump_boost_norm: float = 4
 
 var jump_since_release: bool = false
+var prev_acc: Vector3 = Vector3.ZERO
 
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+func _process(_delta):
+	$Camera3D.set_fov(start_fov + velocity.length() * fov_per_vel)
+	if (velocity.length() > 0.1 && prev_acc.length() > 0 )|| state == State.Arial:
+		$Camera3D.cull_mask = 5
+	else:
+		$Camera3D.cull_mask = 3
 
 func _physics_process(delta):
 	var accel: Vector3 = Vector3.ZERO
@@ -44,7 +53,7 @@ func _physics_process(delta):
 			accel = grounded()
 		State.Arial:
 			accel = arial()
-	
+	prev_acc = accel
 	accel.y -= arial_grav
 	accel.y = max(-term_vel, accel.y)
 	
@@ -119,7 +128,7 @@ func arial() -> Vector3:
 			-Input.get_action_strength("Forwards") + Input.get_action_strength("Backwards"),
 		).rotated(rotation.y) * arial_acceleration
 		if abs(def_acc.length()) < abs(Vector2(velocity.x, velocity.z).length()):
-			acceleration = def_acc
+			acceleration = Vector3(def_acc.x, 0, def_acc.y)
 	
 	return acceleration
 

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://cahpf7ptsyq6l"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k74k2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2xpp"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0.72549, 1, 1)
+fixed_size = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_n65q2"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nybwu"]
+no_depth_test = true
+shading_mode = 0
+albedo_color = Color(0, 0.72549, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o4owh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6she7"]
+shading_mode = 0
+albedo_color = Color(0, 0.72549, 1, 1)
+
+[node name="Target" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_k74k2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+layers = 2
+material_override = SubResource("StandardMaterial3D_s2xpp")
+mesh = SubResource("SphereMesh_n65q2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+layers = 2
+material_override = SubResource("StandardMaterial3D_nybwu")
+mesh = SubResource("SphereMesh_o4owh")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+layers = 4
+material_override = SubResource("StandardMaterial3D_6she7")
+mesh = SubResource("SphereMesh_o4owh")

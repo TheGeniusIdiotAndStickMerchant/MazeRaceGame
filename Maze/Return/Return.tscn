@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5pev0bewleqg"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k74k2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6she7"]
+shading_mode = 0
+albedo_color = Color(0.866667, 0.568627, 0.266667, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_o4owh"]
+
+[node name="Return" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_k74k2")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+layers = 5
+material_override = SubResource("StandardMaterial3D_6she7")
+mesh = SubResource("SphereMesh_o4owh")
