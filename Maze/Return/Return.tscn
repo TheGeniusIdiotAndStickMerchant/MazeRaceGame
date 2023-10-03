@@ -16,6 +16,5 @@ collision_mask = 2
 shape = SubResource("SphereShape3D_k74k2")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-layers = 5
 material_override = SubResource("StandardMaterial3D_6she7")
 mesh = SubResource("SphereMesh_o4owh")
