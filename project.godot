@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Maze Race Game"
+config/name="The Perfect Speedrunning Game"
+config/description="Buggy, elegant, and a pain in the ass to route. Perfect for speedrunning."
 run/main_scene="res://manager.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://Maze/icon.svg"

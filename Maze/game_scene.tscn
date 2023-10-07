@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cbn2k3hyvxt0o" path="res://Maze/3D_Maze.blend" id="1_2njk8"]
 [ext_resource type="Script" path="res://Maze/game_scene.gd" id="1_h8vev"]
 [ext_resource type="PackedScene" uid="uid://dhjgbxmpylx6j" path="res://Player/Player.tscn" id="3_0jj4e"]
-[ext_resource type="PackedScene" uid="uid://c5pev0bewleqg" path="res://Maze/Return/Target.tscn" id="3_f1pve"]
+[ext_resource type="PackedScene" uid="uid://c5pev0bewleqg" path="res://Maze/Return/Return.tscn" id="3_f1pve"]
 [ext_resource type="Texture2D" uid="uid://b81bnrgtgrw7n" path="res://Maze/Maze Texture.png" id="5_amsnu"]
 [ext_resource type="PackedScene" uid="uid://cahpf7ptsyq6l" path="res://Maze/Target/Target.tscn" id="5_mf5jl"]
 
