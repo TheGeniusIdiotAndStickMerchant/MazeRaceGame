@@ -1,9 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhjgbxmpylx6j"]
+[gd_scene load_steps=4 format=3 uid="uid://dhjgbxmpylx6j"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_bymhu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_stfpr"]
 size = Vector3(0.1, 0.5, 0.1)
+
+[sub_resource type="Environment" id="Environment_kpdik"]
+background_mode = 4
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.2
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
@@ -26,8 +32,9 @@ wall_jump_boost_norm = 1.5
 shape = SubResource("BoxShape3D_stfpr")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00370884, 0.214161, -0.00678873)
 cull_mask = 1047555
+environment = SubResource("Environment_kpdik")
 current = true
 fov = 90.0
 near = 0.001
