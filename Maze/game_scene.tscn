@@ -11,6 +11,7 @@
 albedo_texture = ExtResource("5_amsnu")
 
 [node name="Game Scene" type="Node3D"]
+process_mode = 1
 script = ExtResource("1_h8vev")
 target_scene = ExtResource("5_mf5jl")
 return_scene = ExtResource("3_f1pve")
