@@ -2,14 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://cbn2k3hyvxt0o" path="res://Maze/3D_Maze.blend" id="1_2njk8"]
 [ext_resource type="Script" path="res://Maze/game_scene.gd" id="1_h8vev"]
-[ext_resource type="Texture2D" uid="uid://b81bnrgtgrw7n" path="res://Maze/Maze Texture.png" id="2_h6r1f"]
 [ext_resource type="PackedScene" uid="uid://dhjgbxmpylx6j" path="res://Player/Player.tscn" id="3_0jj4e"]
 [ext_resource type="PackedScene" uid="uid://c5pev0bewleqg" path="res://Maze/Return/Target.tscn" id="3_f1pve"]
+[ext_resource type="Texture2D" uid="uid://b81bnrgtgrw7n" path="res://Maze/Maze Texture.png" id="5_amsnu"]
 [ext_resource type="PackedScene" uid="uid://cahpf7ptsyq6l" path="res://Maze/Target/Target.tscn" id="5_mf5jl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6yobg"]
-albedo_texture = ExtResource("2_h6r1f")
-albedo_texture_force_srgb = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mpj1l"]
+albedo_texture = ExtResource("5_amsnu")
 
 [node name="Game Scene" type="Node3D"]
 script = ExtResource("1_h8vev")
@@ -19,7 +18,7 @@ return_scene = ExtResource("3_f1pve")
 [node name="3D_Maze" parent="." instance=ExtResource("1_2njk8")]
 
 [node name="Maze" parent="3D_Maze" index="0"]
-material_override = SubResource("StandardMaterial3D_6yobg")
+material_override = SubResource("StandardMaterial3D_mpj1l")
 
 [node name="Player" parent="." instance=ExtResource("3_0jj4e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
@@ -27,48 +26,51 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
 [node name="TargetPositions" type="Node3D" parent="."]
 
 [node name="Marker3D" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 6, 2)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 5, 8, -1)
 
 [node name="Marker3D2" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 5, -2)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, -6, 1, -1)
 
 [node name="Marker3D3" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, -2)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, -1, 0.053, -6)
 
 [node name="Marker3D4" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -1)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 7, 1, -1)
 
 [node name="Marker3D5" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 4)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 4, 1, 7)
 
 [node name="Marker3D6" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 3, 4)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 4, 3, 6)
 
 [node name="Marker3D7" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, -1)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, -2, 1, 4)
 
 [node name="Marker3D8" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -4)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, -8.00512, -4.0078, 1.00195)
 
 [node name="Marker3D9" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 1)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 0, 4, 2)
 
 [node name="Marker3D10" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, -1, 5)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, -5, -2, 4)
 
 [node name="Marker3D11" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, -3, 2)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 2, -3, 8)
 
 [node name="Marker3D12" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 7, -6, -2)
 
 [node name="Marker3D13" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, -1, -5)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 2, 2, 6)
 
 [node name="Marker3D14" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9597e-05, -0.999665, -4.9997)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 0, 4, 1)
 
 [node name="Marker3D15" type="Marker3D" parent="TargetPositions"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, -1, -2)
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, -5, -3, 1)
+
+[node name="Marker3D16" type="Marker3D" parent="TargetPositions"]
+transform = Transform3D(1, 0, 0, 0, 0.998664, 0.0516736, 0, -0.0516736, 0.998664, 1, 1, 0)
 
 [editable path="3D_Maze"]
